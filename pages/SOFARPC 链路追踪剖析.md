@@ -105,5 +105,9 @@
 - |文件|功能|
   |--|--|
   |rpc-client-digest.log|记录client rpc 调用的链路调用数据|
-  |rpc-client-digest.log|记录client rpc 调用的链路调用数据|
+  |rpc-client-stat.log|记录 client rpc 链路调用的统计数据|
+  |rpc-server-digest.log|记录 server rpc 调用的链路调用数据|
+  |rpc-server-stat.log|记录 client rpc 链路调用的统计数据|
+  |rpc-client-stat.log|记录 client rpc 链路调用的统计数据|
+  |rpc-client-stat.log|记录 client rpc 链路调用的统计数据|
 -

@@ -20,4 +20,10 @@
 - 而 tcp-keepalive 机制可以在连接无活动一段时间后，发送一个空 ack，使 TCP 连接不会被防火墙关闭。
 - #### 默认值
 - tcp-keepalive，操作系统内核支持，但是不默认开启,应用需要自行开启，开启之后有三个参数会生效，来决定一个 keepalive 的行为。
-- /
+- ```java
+  net.ipv4.tcp_keepalive_time = 7200
+  net.ipv4.tcp_keepalive_probes = 9
+  net.ipv4.tcp_keepalive_intvl = 75
+  ```
+- 可以通过如下命令查看系统 tcp-keepalive 参数配置。
+-

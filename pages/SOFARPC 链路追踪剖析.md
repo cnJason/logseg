@@ -67,4 +67,11 @@
 - ![image.png](../assets/image_1652775997934_0.png)
 - 如上图所示展示了两个系统调用中的client span 和server span的关系， 一次RPC调用称为span, 并产生一个spanId, client span 的spanId 和 server span的spanId是同一个，因为都在一个RPC调用中。 下图展示从时间的维度来解释这两者的关系：
 - ![image.png](../assets/image_1652776765067_0.png)
+- ### 3.3.1 TraceId 生成规则
+- TraceId 指的是 SOFATracer 中代表唯一一次请求的 ID，此 ID 一般由集群中第一个处理请求的系统产生，并在分布式调用下通过网络传递到下一个被请求系统。
+- traceId应当保证全局唯一，如何做到全局唯一呢？TraceId 目前的生成的规则参考了淘宝的鹰眼组件：
+- 服务器 IP + 产生 ID 时候的时间 + 自增序列 + 当前进程号
+- 如下图所示：
+- ![image.png](../assets/image_1652776845882_0.png)
+-
 -

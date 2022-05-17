@@ -26,4 +26,8 @@
   net.ipv4.tcp_keepalive_intvl = 75
   ```
 - 可以通过如下命令查看系统 tcp-keepalive 参数配置。
--
+- ```java
+  sysctl -a | grep keepalive
+  cat /proc/sys/net/ipv4/tcp_keepalive_time
+  sysctl net.ipv4.tcp_keepalive_time
+  ```

@@ -163,5 +163,22 @@
   ![image.png](../assets/image_1652775100233_0.png)
 - 指定扩展实现类
 - ![image.png](../assets/image_1652775136934_0.png)
--
-- 3.
+- 扩展描述文件 META-INF/services/sofa-rpc/com.aliapy.sofa.rpc.client.Client
+  ![image.png](../assets/image_1652775154583_0.png)
+- 当这些准备完成后，直接调用即可。
+- ![image.png](../assets/image_1652775168564_0.png)
+- 基于这套扩展加载机制，我们可以实现自定义扩展点，实现 SOFARPC 内部及第三方的自由扩展。
+- ## 总结
+- 本文作为 SOFARPC 框架第一篇，主要还是希望大家对 RPC 框架有一个认识和了解，之后，我们会逐步详细介绍每部分的代码设计和实现，预计会按照如下的目录进行：
+- 1. SOFARPC 同步异步实现剖析
+  2. SOFARPC 线程模型剖析
+  3. SOFARPC 连接管理与心跳剖析
+- SOFARPC 单机故障剔除剖析
+- SOFARPC 路由实现剖析
+- SOFARPC 序列化比较
+- SOFARPC 注解支持剖析
+- SOFARPC 优雅关闭剖析
+- SOFARPC 链路追踪剖析
+- SOFARPC 数据透传剖析
+- SOFARPC 跨语言支持剖析
+- SOFARPC 泛化调用实现剖析

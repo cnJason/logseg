@@ -82,6 +82,7 @@
 - 最终，将会构造出各个不同的 Filter，Invoker 等等。
 - 其中我们首先设计了一个扩展，代表这个类或者接口是可扩展的，默认单例、不需要编码。
 -
+- ```java
 - @Documented
   @Retention(RetentionPolicy.RUNTIME)
   @Target({ ElementType.TYPE })

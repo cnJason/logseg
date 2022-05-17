@@ -91,3 +91,9 @@
   2.  心跳包同时适用于 TCP 和 UDP，在切换 TCP 和 UDP 时，上层的心跳包功能都适用。 
   3. 有些情况下，心跳包可以附带一些其他信息，定时在服务端和客户端之间同步。（比如帧数同步）
 - 所以大多数情况采用业务心跳+TCP keepalive 一起使用，互相作为补充。
+- ### SOFARPC 如何实现
+- #### SOFABolt 基于系统 tcp-keepalive 机制实现
+- 这个比较简单，直接打开 KeepAlive 选项即可。
+- ##### 客户端
+- RpcConnectionFactory 用于创建 RPC 连接，生成用户触发事件，init() 方法初始化 Bootstrap 通过 option() 方法给每条连接设置 TCP 底层相关的属性，ChannelOption.SO_KEEPALIVE 表示是否开启 TCP 底层心跳机制，默认打开 SO_KEEPALIVE 选项。
+-

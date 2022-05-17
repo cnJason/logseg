@@ -37,4 +37,21 @@
 - ![image.png](../assets/image_1652778467236_0.png)
 - ### 如何使用
 - 应用层，以 Java 的 Netty 为例，服务端和客户端设置即可。
-- ```
+- ```java
+- ServerBootstrap b = new ServerBootstrap();
+            b.group(bossGroup, workerGroup)
+             .channel(NioServerSocketChannel.class)
+             .option(ChannelOption.SO_BACKLOG, 100)
+             .childOption(ChannelOption.SO_KEEPALIVE, true)
+             .handler(new LoggingHandler(LogLevel.INFO))
+             .childHandler(new ChannelInitializer<SocketChannel>() {
+                 @Override
+                 public void initChannel(SocketChannel ch) throws Exception {
+                     ch.pipeline().addLast(
+                             new EchoServerHandler());
+                 }
+             });
+- // Start the server.
+            ChannelFuture f = b.bind(port).sync();
+- // Wait until the server socket is closed.
+            f.channel().closeFuture().sync();

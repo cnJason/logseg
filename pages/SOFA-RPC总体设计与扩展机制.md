@@ -82,8 +82,8 @@
 - 最终，将会构造出各个不同的 Filter，Invoker 等等。
 - 其中我们首先设计了一个扩展，代表这个类或者接口是可扩展的，默认单例、不需要编码。
 -
-- ```java
-- @Documented
+- ```java  
+  @Documented
   @Retention(RetentionPolicy.RUNTIME)
   @Target({ ElementType.TYPE })
   public @interface Extensible {
@@ -108,4 +108,7 @@
        * @return 是否需要编码
        */
       boolean coded() default false;
-  }
+  }  
+  ```
+- 同时，针对具体的扩展实现，定义一个扩展注解
+-

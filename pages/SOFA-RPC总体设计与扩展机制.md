@@ -178,7 +178,7 @@
   6. SOFARPC 序列化比较
   7. SOFARPC 注解支持剖析
   8. SOFARPC 优雅关闭剖析
-  9. SOFARPC 链路追踪剖析
-  10. SOFARPC 数据透传剖析
-  11. SOFARPC 跨语言支持剖析
-  12. SOFARPC 泛化调用实现剖析
+  9. [[SOFARPC 链路追踪剖析]] 
+  11. SOFARPC 数据透传剖析
+  12. SOFARPC 跨语言支持剖析
+  13. SOFARPC 泛化调用实现剖析

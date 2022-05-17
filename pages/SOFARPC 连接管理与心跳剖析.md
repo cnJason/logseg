@@ -31,3 +31,9 @@
   cat /proc/sys/net/ipv4/tcp_keepalive_time
   sysctl net.ipv4.tcp_keepalive_time
   ```
+- 系统默认值可以通过这个查看。
+- tcp_keepalive_time，在 TCP 保活打开的情况下，最后一次数据交换到 TCP 发送第一个保活探测包的间隔，即允许的持续空闲时长，或者说每次正常发送心跳的周期，默认值为 7200s（2h）。 tcp_keepalive_probes 在 tcp_keepalive_time 之后，没有接收到对方确认，继续发送保活探测包次数，默认值为 9（次）。 tcp_keepalive_intvl，在 tcp_keepalive_time 之后，没有接收到对方确认，继续发送保活探测包的发送频率，默认值为 75s。
+- 这个不够直观，直接看下面这个图的说明：
+- ![image.png](../assets/image_1652778467236_0.png)
+- 如何使用
+-

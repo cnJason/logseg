@@ -96,4 +96,34 @@
 - 这个比较简单，直接打开 KeepAlive 选项即可。
 - ##### 客户端
 - RpcConnectionFactory 用于创建 RPC 连接，生成用户触发事件，init() 方法初始化 Bootstrap 通过 option() 方法给每条连接设置 TCP 底层相关的属性，ChannelOption.SO_KEEPALIVE 表示是否开启 TCP 底层心跳机制，默认打开 SO_KEEPALIVE 选项。
+- ```java 
+  /**
+   * Rpc connection factory, create rpc connections. And generate user triggered event.
+   */
+  public class RpcConnectionFactory implements ConnectionFactory {
+    public void init(final ConnectionEventHandler connectionEventHandler) {
+      bootstrap = new Bootstrap();
+      bootstrap.group(workerGroup).channel(NioSocketChannel.class)
+          ...
+          .option(ChannelOption.SO_KEEPALIVE, SystemProperties.tcp_so_keepalive());
+      ...
+    }
+  }
+  ```
+- ##### 服务端
+- RpcServer 服务端启动类 ServerBootstrap 初始化通过 option() 方法给每条连接设置 TCP 底层相关的属性，默认设置 ChannelOption.SO_KEEPALIVE 选项为 true，即表示 RPC 连接开启 TCP 底层心跳机制。
+- ```java 
+  /**
+   * Server for Rpc.
+   */
+  public class RpcServer extends RemotingServer {
+    protected void doInit() {
+      this.bootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
+         ...
+         .childOption(ChannelOption.SO_KEEPALIVE, SystemProperties.tcp_so_keepalive());
+      ...
+    }
+  }
+  ```
+- ### SOFABolt 基于 Netty IdleStateHandler 心跳实现
 -

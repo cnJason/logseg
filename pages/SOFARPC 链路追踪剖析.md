@@ -66,4 +66,5 @@
   4. ss (server send)
   5
 - ![image.png](../assets/image_1652775997934_0.png)
+- 如上图所示展示了两个系统调用中的client span 和server span的关系， 一次RPC调用称为span, 并产生一个spanId, client span 的spanId 和 server span的spanId是同一个，因为都在一个RPC调用中。 下图展示从时间的维度来解释这两者的关系：
 -

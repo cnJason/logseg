@@ -126,4 +126,7 @@
   }
   ```
 - ### SOFABolt 基于 Netty IdleStateHandler 心跳实现
+- SOFABolt 基于 Netty 的事件来实现心跳，Netty 的 IdleStateHandler 当连接的空闲时间(读或者写)太长时，将会触发一个 IdleStateEvent 事件，然后 BOLT 通过重写 userEventTrigged 方法来处理该事件。如果连接超过指定时间没有接收或者发送任何的数据即连接的空闲时间太长，IdleStateHandler 使用 IdleStateEvent 事件调用 fireUserEventTriggered() 方法，当检测到 IdleStateEvent 事件执行发送心跳消息等业务逻辑。
+- ![image.png](../assets/image_1652779173530_0.png)
+- 简而言之，向 Netty 中注册一个处理 Idle 事件的监听器。同时注册的时候，会传入 idle 产生的事件，比如读 IDLE 还是写 IDLE，还是都有，多久没有读写则认为是 IDLE 等。
 -

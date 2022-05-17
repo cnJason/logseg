@@ -47,3 +47,14 @@
   9. 链路调用日志数据的文件存储结构
 - ### 3.1 可插拔设计
 - SOFARPC自身具备的微内核设计和可拓展性，使得在SOFARPC在不破坏开放封闭原则的前提下，比较轻松地集合SOFATracer。SOFARPC 采用了自己实现的一套SPI机制， 通过该SPI机制动态去加载其他模块、过滤器、协议等，实现灵活拓展。SOFARPC 为了集成SOFATracer也采用了这套机制，做到可插拔。
+- ![image.png](../assets/image_1652775869993_0.png)
+- SofaTracerModule 类实现了Module 接口，并增加 @Extension(“sofaTracer”) 注解，方便SOFARPC在启动时将相关模块加载进来。 SofaTracerModule 作为SOFA-PRC 链路追踪的入口，在SofaTracerModule模块被加载时完成一些事件的订阅。
+- 这里会订阅 9 种事件， 通过监听SOFARPC的这 9 种事件，来完成埋点数据的获取和异步磁盘写入操作。SOFARPC通过事件总线设计来订阅这些事件，当事件发生时通知对应的订阅者做相应的操作。
+- ### 3.2 事件总线设计
+- 事件总线(EventBus)设计也是 SOFARPC的一个具有很强扩展性的设计，EventBus 类似计算机数据总线，用于传输数据，EventBus主要是传输事件数据。 EventBus 采用了发布-订阅设计模式，在SOFARPC 服务调用的整个过程中设置多个事件点，当这些事件发生时就创建事件写入到EventBus，订阅者可以订阅总线中感兴趣的事件并处理。如图所示：
+- ![image.png](../assets/image_1652775899476_0.png)
+- 如上图所示，SOFATracer 订阅了在RPC调用周期的9种事件，当这些事件发生时会创建事件传入到EventBus。 EventBus中一旦发布新的事件就会通知所有感兴趣的订阅者，SAFA-Tracer 统一采用 SofaTracerSubscriber 订阅和处理这9种事件，最终链路追踪数据的获取操作都交给了RpcSofaTracer处理。
+- 这种总线设计使得SOFARPC在集合SOFATracer时无需为了获取数据而破坏原来代码的封装性，使用无侵入的方式来完成埋点和数据的获取。
+- ### 3.3 调用链Trace 和Span
+- SOFATracer的设计思路也是来自Dapper, 因此也提供了调用树Trace 和 Span。
+-

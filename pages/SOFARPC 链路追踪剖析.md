@@ -57,4 +57,10 @@
 - 这种总线设计使得SOFARPC在集合SOFATracer时无需为了获取数据而破坏原来代码的封装性，使用无侵入的方式来完成埋点和数据的获取。
 - ### 3.3 调用链Trace 和Span
 - SOFATracer的设计思路也是来自Dapper, 因此也提供了调用树Trace 和 Span。
--
+- * Trace是一次完整的跟踪，从请求到服务器开始，服务器返回response结束，跟踪每次rpc调用的耗时。 Trace是一个类似树状调用链，树中的每个节点对应一个系统或服务节点。
+  * Span是一个更小的单位，表示一个RPC调用过程。在SOFARPC中分为 ClientSpan 和ServerSpan。 ClientSpan记录从客户端发送请求给服务端，到接受到服务端响应结果的过程。ServerSpan是服务端收到客户端时间 到 发送响应结果给客户端的这段过程。
+- 一个span 包含几种Annotation:
+- 1. cs (client send)
+  2. cr (client recv)
+  3. sr (server recv)
+  4. ss (server send)

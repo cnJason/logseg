@@ -60,4 +60,12 @@
   ```
 - 就是这里面的ChannelOption.SO_KEEPALIVE, true 对应即可打开.
 - 目前 bolt 中也是默认打开的.
+- > .childOption(ChannelOption.SO_KEEPALIVE,
+                  Boolean.parseBoolean(System.getProperty(Configs.TCP_SO_KEEPALIVE, "true")));
+- Java 程序只能做到设置 SO_KEEPALIVE 选项，至于 TCP_KEEPCNT，TCP_KEEPIDLE，TCP_KEEPINTVL 等参数配置，只能依赖于 sysctl 配置，系统进行读取。
+- ### 检查
+- 查看 tcp 连接 tcp_keepalive 状态
+- > 我们可以用 netstat -no|grep keepalive 命令来查看当前哪些 tcp 连接开启了 tcp keepalive.
+- ![image.png](../assets/image_1652778844662_0.png)
+- ### 应用层 keep-alive
 -

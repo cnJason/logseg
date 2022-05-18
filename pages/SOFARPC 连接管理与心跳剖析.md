@@ -130,25 +130,47 @@
 - ![image.png](../assets/image_1652779173530_0.png)
 - 简而言之，向 Netty 中注册一个处理 Idle 事件的监听器。同时注册的时候，会传入 idle 产生的事件，比如读 IDLE 还是写 IDLE，还是都有，多久没有读写则认为是 IDLE 等。
 - ### 客户端
-- ```java 
-  final boolean idleSwitch = SystemProperties.tcp_idle_switch();
-  final int idleTime = SystemProperties.tcp_idle();
-  final RpcHandler rpcHandler = new RpcHandler(userProcessors);
-  final HeartbeatHandler heartbeatHandler = new HeartbeatHandler();
-  bootstrap.handler(new ChannelInitializer<SocketChannel>() {
+- ```java
+  /**
+   * Heart beat triggerd.
+   */
+  @Sharable
+  public class HeartbeatHandler extends ChannelDuplexHandler {
   
-      protected void initChannel(SocketChannel channel) throws Exception {
-          ChannelPipeline pipeline = channel.pipeline();
-          ...
-          if (idleSwitch) {
-              pipeline.addLast("idleStateHandler", new IdleStateHandler(idleTime, idleTime,
-                  0, TimeUnit.MILLISECONDS));
-              pipeline.addLast("heartbeatHandler", heartbeatHandler);
+      @Override
+      public void userEventTriggered(final ChannelHandlerContext ctx, Object evt) throws Exception {
+          if (evt instanceof IdleStateEvent) {
+              ProtocolCode protocolCode = ctx.channel().attr(Connection.PROTOCOL).get();
+              Protocol protocol = ProtocolManager.getProtocol(protocolCode);
+              protocol.getHeartbeatTrigger().heartbeatTriggered(ctx);
+          } else {
+              super.userEventTriggered(ctx, evt);
           }
-          ...
       }
-  
-  });
+  }
   ```
 - SOFABolt 心跳检测客户端默认基于 IdleStateHandler(15000ms, 150000 ms, 0) 即 15 秒没有读或者写操作，注册给了 Netty，之后调用 HeartbeatHandler的userEventTriggered() 方法触发 RpcHeartbeatTrigger 发送心跳消息。RpcHeartbeatTrigger 心跳检测判断成功标准为是否接收到服务端回复成功响应，如果心跳失败次数超过最大心跳次数(默认为 3)则关闭连接。
--
+- ```java
+  /**
+   * Heart beat triggerd.
+   */
+  @Sharable
+  public class HeartbeatHandler extends ChannelDuplexHandler {
+  
+      @Override
+      public void userEventTriggered(final ChannelHandlerContext ctx, Object evt) throws Exception {
+          if (evt instanceof IdleStateEvent) {
+              ProtocolCode protocolCode = ctx.channel().attr(Connection.PROTOCOL).get();
+              Protocol protocol = ProtocolManager.getProtocol(protocolCode);
+              protocol.getHeartbeatTrigger().heartbeatTriggered(ctx);
+          } else {
+              super.userEventTriggered(ctx, evt);
+          }
+      }
+  }
+  ```
+- ### 服务端
+- SOFABolt 心跳检测服务端默认基于 IdleStateHandler(0,0, 90000 ms) 即 90 秒没有读或者写操作为空闲，调用 ServerIdleHandler的userEventTriggered() 方法触发关闭连接。
+- SOFABolt 心跳检测由客户端在没有对 TCP 有读或者写操作后触发定时发送心跳消息，服务端接收到提供响应；如果客户端持续没有发送心跳无法满足保活目的则服务端在 90 秒后触发关闭连接操作。正常情况由于默认客户端 15 秒/服务端 90 秒进行心跳检测，因此一般场景服务端不会运行到 90 秒仍旧没有任何读写操作的，并且只有当客户端下线或者抛异常的时候等待 90 秒过后服务端主动关闭与客户端的连接。如果是 tcp-keepalive 需要等到 90 秒之后，在此期间则为读写异常。
+- ```java
+  ```

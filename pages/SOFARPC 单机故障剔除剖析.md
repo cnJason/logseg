@@ -39,5 +39,11 @@
 - ### 3.1 整体结构和入口
 - [[SOFARPC 链路追踪剖析]] 中已介绍 SOFARPC 的 内核设计和总线设计，和链路追踪功能一样，SOFARPC 单机故障剔除能力也是基于内核设计和总线设计，做到可插拔、零侵入。
 - SOFARPC 单机故障剔除模块是 FaultToleranceModule， 通过 SOFARPC 的 SPI 机制完成模块的自动化加载，以完成该功能的插入。 FaultToleranceModule 模块包含了两个重要部分：
-- 1. **subscriber 事件订阅器** ： 通过订阅事件总线 EventBus 的事件，以零侵入方式完成 RPC 调用的统计和信息收集。
-  2. regulator 调节器 。 根据收集的 RPC 调用信息，完成服务调用或服务权重的调节，达到服务降级和服务恢复的目的。内置了信息收集器、计算策略、度量策略、恢复策略， 是单机故障剔除的核心实现。
+- 1. **subscriber 事件订阅器** ：通过订阅事件总线 EventBus 的事件，以零侵入方式完成 RPC 调用的统计和信息收集。
+  2. **regulator 调节器** ：根据收集的 RPC 调用信息，完成服务调用或服务权重的调节，达到服务降级和服务恢复的目的。内置了信息收集器、计算策略、度量策略、恢复策略， 是单机故障剔除的核心实现。
+  FaultToleranceModule 主要关心两种调用事件：
+- 1. 同步结果事件： ClientSyncReceiveEvent， 收集和统计 RPC 同步 调用次数和出现异常的次数。
+  2. 异步结果事件： ClientAsyncReceiveEvent，收集和统计 RPC 异步 调用次数和出现异常的次数。
+- 虽然SOFAPRC 5.3.0 以上版本已经内置了 FaultToleranceModule， 但默认情况下单机故障剔除功能是关闭的，需要开启 regulationEffective 全局开关，才能开启整个单点故障自动剔除功能，否则完全不进入该功能。如图所示是整个 SOFARPC 故障自动剔除功能的整体结构：
+- ![image.png](../assets/image_1652840478552_0.png)
+-

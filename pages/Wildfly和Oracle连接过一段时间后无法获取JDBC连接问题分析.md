@@ -34,9 +34,10 @@
   3. 服务配置文件(standalone.xml)
 - ## 问题分析
 - ### jstack分析
-- 通过排查jstack日志可知，在服务异常的情况下依然有少数jdbc连接处理runnable状态。
-  ![image.png](../assets/image_1652859993516_0.png) 
-  3. 
-  4.
+- 通过分析jstack日志可知，在服务异常的情况下依然有少数jdbc连接处理runnable状态。
+  ![image.png](../assets/image_1652859993516_0.png)
+- 由上可知连接池是有效。而错误日志提示的是：
+- > You are trying to use a connection factory that has been shut down
+-
 -
 -

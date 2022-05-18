@@ -173,7 +173,7 @@
 - 1. SOFARPC 同步异步实现剖析
   2. SOFARPC 线程模型剖析
   3. [[SOFARPC 连接管理与心跳剖析]] 
-  4. SOFARPC 单机故障剔除剖析
+  4. [[SOFARPC 单机故障剔除剖析]] 
   5. SOFARPC 路由实现剖析
   6. SOFARPC 序列化比较
   7. SOFARPC 注解支持剖析

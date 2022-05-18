@@ -173,4 +173,48 @@
 - SOFABolt 心跳检测服务端默认基于 IdleStateHandler(0,0, 90000 ms) 即 90 秒没有读或者写操作为空闲，调用 ServerIdleHandler的userEventTriggered() 方法触发关闭连接。
 - SOFABolt 心跳检测由客户端在没有对 TCP 有读或者写操作后触发定时发送心跳消息，服务端接收到提供响应；如果客户端持续没有发送心跳无法满足保活目的则服务端在 90 秒后触发关闭连接操作。正常情况由于默认客户端 15 秒/服务端 90 秒进行心跳检测，因此一般场景服务端不会运行到 90 秒仍旧没有任何读写操作的，并且只有当客户端下线或者抛异常的时候等待 90 秒过后服务端主动关闭与客户端的连接。如果是 tcp-keepalive 需要等到 90 秒之后，在此期间则为读写异常。
 - ```java
+  this.bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
+  
+      protected void initChannel(SocketChannel channel) throws Exception {
+          ...
+          if (idleSwitch) {
+              pipeline.addLast("idleStateHandler", new IdleStateHandler(0, 0, idleTime,
+                  TimeUnit.MILLISECONDS));
+              pipeline.addLast("serverIdleHandler", serverIdleHandler);
+          }
+          ...
+          createConnection(channel);
+      }
+      ...
+  });
   ```
+- 服务端一旦产生 IDLE，那么说明服务端已经 6 个 15s 没有发送或者接收到数据了。这时候认为客户端已经不可用。直接断开连接。
+- ```java
+  /**
+   * Server Idle handler.
+   * 
+   * In the server side, the connection will be closed if it is idle for a certain period of time.
+   */
+  @Sharable
+  public class ServerIdleHandler extends ChannelDuplexHandler {
+  
+      private static final Logger logger = BoltLoggerFactory.getLogger("CommonDefault");
+  
+      @Override
+      public void userEventTriggered(final ChannelHandlerContext ctx, Object evt) throws Exception {
+          if (evt instanceof IdleStateEvent) {
+              try {
+                  ctx.close();
+              } catch (Exception e) {
+                  ...
+              }
+          } else {
+              super.userEventTriggered(ctx, evt);
+          }
+      }
+  }
+  ```
+- ## SOFARPC 连接管理断开重连实现
+- 通常 RPC 调用过程是不需要断链与重连的。因为每次 RPC 调用过程都校验是否有可用连接，如果没有则新建连接。但有一些场景是需要断链和保持长连接的：
+- 自动断连：比如通过 LVS VIP 或者 F5 建立多个连接的场景，因为网络设备的负载均衡机制，有可能某一些连接固定映射到了某几台后端的 RS 上面，此时需要自动断连然后重连，靠建连过程的随机性来实现最终负载均衡。注意开启自动断连的场景通常需要配合重连使用。
+- 重连：比如客户端发起建连后由服务端通过双工通信发起请求到客户端，此时如果没有重连机制则无法实现。

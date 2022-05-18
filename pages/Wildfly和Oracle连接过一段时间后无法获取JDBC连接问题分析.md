@@ -41,6 +41,7 @@
 - > You are trying to use a connection factory that has been shut down
 - ### 运行日志分析
 - 运行日志中有效的信息即为上述的：You are trying to use a connection factory that has been shut down。
-- 此场景通常出现在jdbc connection在数据库端断开后仍然保持。此场景的解决方案
+- 此场景通常出现在jdbc connection在数据库端断开后仍然保持。此场景建议的解决方案为在客户端添加断线重连的功能。
+- ###
 -
 -

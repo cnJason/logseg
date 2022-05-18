@@ -33,6 +33,10 @@
   2. 显示日志
   3. 服务配置文件(standalone.xml)
 - ## 问题分析
-- 1. 通过排查jstack日志可知，在服务异常的情况下依然有5个jdbc连接处理
+- ### jstack分析
+- 通过排查jstack日志可知，在服务异常的情况下依然有少数jdbc连接处理runnable状态。
+  ![image.png](../assets/image_1652859993516_0.png) 
+  3. 
+  4.
 -
 -

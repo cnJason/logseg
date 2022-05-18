@@ -60,4 +60,21 @@
 - TimeWindowRegulator 中维护了一个 MeasureModel 的列表结构，采用 CopyOnWriteArrayList 数据结构，保证线程安全。
 - > private final CopyOnWriteArrayList<MeasureModel> measureModels
 - MeasureModel 是按 app + service 的维度存储，即一个应用下的某个服务，如交易系统中的交易查询服务 TransQueryService. 正常一个服务会部署在多个机器上，MeasureModel 会维护这些所有服务, 在数据结构内部使用 InvocationStat 列表来维护这些机器上的服务调用关系。
-- ```java
+- ```java 
+  private final String                            appName;
+  private final String                            service;
+  /**
+   * all dimension statics stats of measure model
+   */
+  private final ConcurrentHashSet<InvocationStat> stats;
+  ```
+- 假设有两个服务 ApiGateWay 和 TransCenter，分别都部署在两台机器上。 TransCenter 向 ApiGateWay 提供了交易查询（TransQueryService）服务 , 如图所示：
+- ![image.png](../assets/image_1652840625831_0.png)
+- 如上图所示 InvokeStat 是基于 consumer + provider + service 维度，InvokeStat1 表示 ApiGateway1 调用了 TransCenter-1 的 TransQueryService 服务。 因此 TransCenter 的MeasureModel 数据模型结构如下：
+- ![image.png](../assets/image_1652840641305_0.png)
+- #### 窗口计算
+- 为了保证并发调用环境下的数据安全性，InvokeStat 中的数据采用原子类作为变量类型。事件订阅器收到同步或异步结果事件后，就会从工厂中获取这次调用的 InvokeStat（如果 InvokeStat 已经存在则直接返回，如果没有则创建新的并保持到缓存中）。通过调用 InvokeStat 的 invoke 和 catchException 方法统计调用次数和异常次数。
+- 在每个窗口到期时，则会从 MeasueModel 的各个 InvokeStat 创建一份镜像数据，表示当前串口内的调用情况。而原 InvokeStat 进入到下一个窗口，进行统计，由于此刻为扣除上一个窗口的统计信息因此该窗口的数据包含了上一个窗口的统计数据。当度量策略将本窗口的镜像数据统计完成以后，会将 InvokeStat 的数据扣除掉当前窗口的镜像数据，使得 InvokeStat 中的数据为下一个窗口调用数据。
+- ![image.png](../assets/image_1652840663408_0.png)
+- ### 3.3 度量策略
+-

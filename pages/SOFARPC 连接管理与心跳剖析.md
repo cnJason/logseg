@@ -130,4 +130,25 @@
 - ![image.png](../assets/image_1652779173530_0.png)
 - 简而言之，向 Netty 中注册一个处理 Idle 事件的监听器。同时注册的时候，会传入 idle 产生的事件，比如读 IDLE 还是写 IDLE，还是都有，多久没有读写则认为是 IDLE 等。
 - ### 客户端
+- ```java 
+  final boolean idleSwitch = SystemProperties.tcp_idle_switch();
+  final int idleTime = SystemProperties.tcp_idle();
+  final RpcHandler rpcHandler = new RpcHandler(userProcessors);
+  final HeartbeatHandler heartbeatHandler = new HeartbeatHandler();
+  bootstrap.handler(new ChannelInitializer<SocketChannel>() {
+  
+      protected void initChannel(SocketChannel channel) throws Exception {
+          ChannelPipeline pipeline = channel.pipeline();
+          ...
+          if (idleSwitch) {
+              pipeline.addLast("idleStateHandler", new IdleStateHandler(idleTime, idleTime,
+                  0, TimeUnit.MILLISECONDS));
+              pipeline.addLast("heartbeatHandler", heartbeatHandler);
+          }
+          ...
+      }
+  
+  });
+  ```
+- SOFABolt 心跳检测客户端默认基于 IdleStateHandler(15000ms, 150000 ms, 0) 即 15 秒没有读或者写操作，注册给了 Netty，之后调用 HeartbeatHandler的userEventTriggered() 方法触发 RpcHeartbeatTrigger 发送心跳消息。RpcHeartbeatTrigger 心跳检测判断成功标准为是否接收到服务端回复成功响应，如果心跳失败次数超过最大心跳次数(默认为 3)则关闭连接。
 -

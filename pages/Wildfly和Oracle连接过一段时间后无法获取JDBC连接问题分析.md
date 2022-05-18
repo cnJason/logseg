@@ -43,10 +43,9 @@
 - 运行日志中有效的信息即为上述的：You are trying to use a connection factory that has been shut down。
 - 此场景通常出现在jdbc connection在数据库端断开后仍然保持。此场景建议的解决方案为在客户端添加断线重连的功能。
 - ## 可验证步骤
-- 1. 在应用侧添加断线重连的配置。以下配置仅供参考：
+- 1. 在应用侧添加断线重连的配置。下面是JBOSS的配置，Wildfly的配置需要进一步探究，配置仅供参考：
 - ```xml
-  ```
-- <local-tx-datasource>
+  <local-tx-datasource>
         <jndi-name>flhis</jndi-name>
         <connection-url>jdbc:oracle:thin:@flsys:1521:flhis</connection-url>
         <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
@@ -61,5 +60,7 @@
         <track-statements/>
         <prepared-statement-cache-size>32</prepared-statement-cache-size>
      </local-tx-datasource>
+  ```
+-
 -
 -

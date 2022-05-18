@@ -42,6 +42,24 @@
 - ### 运行日志分析
 - 运行日志中有效的信息即为上述的：You are trying to use a connection factory that has been shut down。
 - 此场景通常出现在jdbc connection在数据库端断开后仍然保持。此场景建议的解决方案为在客户端添加断线重连的功能。
-- ###
+- ## 可验证步骤
+- 1. 在应用侧添加断线重连的配置。以下配置仅供参考：
+- ```xml
+  ```
+- <local-tx-datasource>
+        <jndi-name>flhis</jndi-name>
+        <connection-url>jdbc:oracle:thin:@flsys:1521:flhis</connection-url>
+        <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+        <user-name>flhis</user-name>
+        <password>flhis_123456</password>
+         <exception-sorter-class-name>org.jboss.resource.adapter.jdbc.vendor.OracleExceptionSorter</exception-sorter-class-name>
+        <!--<new-connection-sql>select 1 from dual</new-connection-sql>-->
+        <check-valid-connection-sql>select 1 from dual</check-valid-connection-sql>
+        <min-pool-size>5</min-pool-size>
+        <max-pool-size>20</max-pool-size>
+        <idle-timeout-minutes>0</idle-timeout-minutes>
+        <track-statements/>
+        <prepared-statement-cache-size>32</prepared-statement-cache-size>
+     </local-tx-datasource>
 -
 -

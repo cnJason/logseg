@@ -77,4 +77,13 @@
 - 在每个窗口到期时，则会从 MeasueModel 的各个 InvokeStat 创建一份镜像数据，表示当前串口内的调用情况。而原 InvokeStat 进入到下一个窗口，进行统计，由于此刻为扣除上一个窗口的统计信息因此该窗口的数据包含了上一个窗口的统计数据。当度量策略将本窗口的镜像数据统计完成以后，会将 InvokeStat 的数据扣除掉当前窗口的镜像数据，使得 InvokeStat 中的数据为下一个窗口调用数据。
 - ![image.png](../assets/image_1652840663408_0.png)
 - ### 3.3 度量策略
+- 度量策略会计算模型 MeasureModel 里的数据进行度量，选出正常和异常节点。 默认采用服务水平 ip 资源度量策略，如果某个 ip 的异常率大于该服务所有 ip 的平均异常率到一定比例，则判定为异常。
+- 度量策略将计算模型设置为三种状态：HEALTH(正常)、ABNORMAL(异常)、IGNORE(忽略)。这三种状态根据异常率情况相互转化。
+- ![image.png](../assets/image_1652840683276_0.png)
+- 继续以 TransQueryService 为例，阐述度量策略的操作过程：
+- ![image.png](../assets/image_1652840701372_0.png)
+- 结合上述例子，度量策略的大致逻辑如下：
+- * 首先统计该服务下所有 ip 的平均异常率，并用 averageExceptionRate 表示。平均异常率比较好理解，即异常总数 / 总调用次数，上例中 averageExceptionRate =(1 + 4) / (5 + 10 + 10) = 0.2.
+  * 当某个 ip 的窗口调用次数小于该服务的最小窗口调用次数( leastWindCount )则忽略并将状态设置为 IGNOGRE。否则进行降级和恢复度量。 如 invokeStat 1 的 invokeCount 为5，如果 leastWindCount 设置为6 则 invokeStat 1 会被忽略。
+-
 -

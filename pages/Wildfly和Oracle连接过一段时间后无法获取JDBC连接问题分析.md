@@ -36,10 +36,11 @@
 - ### jstack分析
 - 通过分析jstack日志可知，在服务异常的情况下依然有少数jdbc连接处理runnable状态。
   ![image.png](../assets/image_1652859993516_0.png)
+-
 - 由上可知连接池是有效。而错误日志提示的是：
 - > You are trying to use a connection factory that has been shut down
 - ### 运行日志分析
 - 运行日志中有效的信息即为上述的：You are trying to use a connection factory that has been shut down。
-- 此场景通常出现在jdbc connection在数据库实例释放后
+- 此场景通常出现在jdbc connection在数据库实例释放后仍然
 -
 -

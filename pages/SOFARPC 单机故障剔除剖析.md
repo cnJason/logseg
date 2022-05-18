@@ -57,4 +57,7 @@
 - ### 3.2 信息收集器
 - 信息收集器负责是 RPC 调用的信息收集和存储工作，了解信息收集器的存储结构有利于了解故障剔除的维度和 RPC调用统计管理。
 - #### 数据结构
--
+- TimeWindowRegulator 中维护了一个 MeasureModel 的列表结构，采用 CopyOnWriteArrayList 数据结构，保证线程安全。
+- > private final CopyOnWriteArrayList<MeasureModel> measureModels
+- MeasureModel 是按 app + service 的维度存储，即一个应用下的某个服务，如交易系统中的交易查询服务 TransQueryService. 正常一个服务会部署在多个机器上，MeasureModel 会维护这些所有服务, 在数据结构内部使用 InvocationStat 列表来维护这些机器上的服务调用关系。
+- ```java

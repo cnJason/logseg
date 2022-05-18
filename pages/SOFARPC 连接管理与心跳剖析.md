@@ -224,4 +224,5 @@
 - 1. 检查存活的客户端列表 aliveConnections 是否可用，如果存活列表里连接已经不可用则需要放到待重试列表 retryConnections 里面；
   2. 遍历失败待重试的客户端列表 retryConnections，如果连接命中重连周期则进行重连，重连成功放到存活列表 aliveConnections 里面，如果待重试连接多次重连失败则直接丢弃。
 - 核心代码在连接管理器的方法中：
-- >
+- > com.alipay.sofa.rpc.client.AllConnectConnectionHolder#doReconnect
+-

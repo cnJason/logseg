@@ -1,4 +1,7 @@
 - ## CSE说明
 - 微服务引擎（Cloud Service Engine）是用于微服务应用的云中间件，为用户提供注册发现、服务治理、配置管理等高性能和高韧性的企业级云服务能力；CSE可无缝兼容SpringCloud、ServiceComb等开源生态；用户也可结合其他云服务，快速构建云原生微服务体系，实现微服务应用的快速开发和高可用运维。
 - 目前我们只有ServiceComb的应用环境。故目前的版本使用ServiceComb进行验证。
--
+- ## API说明
+- CSE提供了REST（Representational State Transfer）风格API，支持通过HTTPS请求调用，分为以下几块：
+	- 鉴权
+	-

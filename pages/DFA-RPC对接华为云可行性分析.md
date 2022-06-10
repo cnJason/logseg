@@ -29,7 +29,11 @@
   public abstract void unSubscribe(ConsumerConfig config); //取消订阅，优雅关闭使用
   public abstract void batchUnSubscribe(List<ConsumerConfig> configs); //批量取消订阅
 -
-- ## CSE的API
+- ## DFA-RPC对接CSE的接入点梳理
+- 基于上面的分析，我们可知需要在DFA-RCP的registry的各方法中织入以下的方法来完成与CSE的对接。
+- ### 启动客户端
+- 方法名：start()
+-
 -
 -
 -

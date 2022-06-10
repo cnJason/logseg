@@ -16,7 +16,12 @@
   5. 整合基于bolt协议的元数据结构与CSE元数据结构的对接场景。
   6.完成CSE的registry模块(DFA-RPC体系)。
 -
-- ## [[华为CSE对应API梳理]]
+- ## 华为CSE对应API梳理
+- 华为CSE对应的API梳理参看： [[华为CSE对应API梳理]]
+- ## DFA-RPC的registry模块的注册机制
+- DFA-RPC的registry模块的注册机制参看： [[DFA-RPC的registry模块的注册机制]]
+-
+-
 -
 -
 -

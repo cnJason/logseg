@@ -19,8 +19,17 @@
 - ## 华为CSE对应API梳理
 - 华为CSE对应的API梳理参看： [[华为CSE对应API梳理]]
 - ## DFA-RPC的registry模块的注册机制
-- DFA-RPC的registry模块的注册机制参看： [[DFA-RPC的registry模块的注册机制]]
+- DFA-RPC的registry模块的注册机制参看： https://help.aliyun.com/document_detail/149925.html
+- 对应的方法如下：
+- public abstract boolean start();  //启动客户端 
+  public abstract void register(ProviderConfig config);  //注册服务
+  public abstract void unRegister(ProviderConfig config);  //取消注册，优雅关闭使用
+  public abstract void batchUnRegister(List<ProviderConfig> configs); //批量取消注册
+  public abstract List<ProviderGroup> subscribe(ConsumerConfig config); //订阅服务
+  public abstract void unSubscribe(ConsumerConfig config); //取消订阅，优雅关闭使用
+  public abstract void batchUnSubscribe(List<ConsumerConfig> configs); //批量取消订阅
 -
+- ## CSE的API
 -
 -
 -

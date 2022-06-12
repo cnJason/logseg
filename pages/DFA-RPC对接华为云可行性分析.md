@@ -47,6 +47,7 @@
 - 1. 注册微服务实例
   2. 修改微服务实例扩展信息
   3. 修改微服务实例状态
+  ![注册微服务.png](../assets/注册微服务_1655002084436_0.png)
 -
 - ### 取消注册
 - registry的方法名：unRegister(ProviderConfig config)

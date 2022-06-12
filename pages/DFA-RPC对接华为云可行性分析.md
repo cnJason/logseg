@@ -132,12 +132,8 @@
   |staticAttrs|string|其他静态属性|默认为空|
 - ## CSE数据结构定义
 - CSE数据结构如下：
+- ![image.png](../assets/image_1655005155287_0.png)
+- ![image.png](../assets/image_1655005169143_0.png)
 -
 - ## bolt协议对接CSE数据结构
--
--
--
--
--
--
 -

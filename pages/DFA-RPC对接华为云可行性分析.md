@@ -116,7 +116,17 @@
 - bolt协议传输需要以下元数据：
 - com.shine.dfa.sample.service.runtime.UserBService:1.0@DEFAULT	bolt://192.168.31.133:12203?serialization=hessian2
 - 数据结构说明
+- providerGroup的数据结构如下：
 -
+- providerInfo的数据结构如下：
+- |字段名|字段类型|字段说明|参考值|
+  |--|--|--|--|
+  |port|integer|端口号|12200|
+  |weight|double|权重|1.0|
+  |serializationType|string|序列化类型|hessian2|
+  |protocolType|string|协议|bolt|
+  |path|string|url路径|10.168.1.235|
+  |staticAttrs|string|其他静态属性|默认为空|
 -
 -
 -

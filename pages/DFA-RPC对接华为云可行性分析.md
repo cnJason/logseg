@@ -117,7 +117,10 @@
 - com.shine.dfa.sample.service.runtime.UserBService:1.0@DEFAULT	bolt://192.168.31.133:12203?serialization=hessian2
 - 数据结构说明
 - providerGroup的数据结构如下：
--
+- |字段名|字段类型|字段说明|参考值|
+  |--|--|--|--|
+  |name|string|组名称|com.shine.dfa.sample.service.runtime.UserBService:1.0@DEFAULT|
+  |providerInfos| array|注册信息列表 | 参看providerInfo数据结构|
 - providerInfo的数据结构如下：
 - |字段名|字段类型|字段说明|参考值|
   |--|--|--|--|

@@ -130,6 +130,9 @@
   |protocolType|string|协议|bolt|
   |path|string|url路径|10.168.1.235|
   |staticAttrs|string|其他静态属性|默认为空|
+- ## CSE数据结构定义
+- CSE数据结构如下：
+-
 - ## bolt协议对接CSE数据结构
 -
 -

@@ -57,10 +57,12 @@
   ![注销微服务实例.png](../assets/注销微服务实例_1655002210094_0.png)
 - ### 批量取消注册
 - registry的方法名：batchUnRegister(List<ProviderConfig> configs)
-- CSE需要调用的接口与取消注册方法一致为：
-- 1. 修改微服务实例状态
-  2. 注销微服务实例
--
+- CSE需要调用的接口与取消注册方法一致。
+- ### 订阅服务
+- registry的方法名：subscribe(ConsumerConfig config)
+- CSE需要调用的接口为：
+- 1. 查询指定微服务信息
+  2.
 -
 -
 -

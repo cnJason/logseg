@@ -133,8 +133,19 @@
   |staticAttrs|string|其他静态属性|默认为空|
 - ## CSE数据结构定义
 - CSE数据结构如下：
+- mircoService部分：
 - ![image.png](../assets/image_1655006494243_0.png)
-- ## bolt协议对接CSE数据结构
+- mircoServiceInstance部分：
+- ![image.png](../assets/image_1655007022179_0.png)
+- ![image.png](../assets/image_1655007034734_0.png)
 -
-	-
+- ## bolt协议对接CSE数据结构
+- ### providerGroup部分
+- |bolt字段名|CSE字段名|是否需要转换|说明|
+  |--|--|--|--|
+  |appName|appId|否|
+  |groupName|serviceName|是|groupName中的service全路径部分|
+  |groupName|version|是|groupName中的version部分|
+- ### providerInfo部分
+-
 -

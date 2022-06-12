@@ -147,5 +147,13 @@
   |groupName|serviceName|是|groupName中的service全路径部分|
   |groupName|version|是|groupName中的version部分|
 - ### providerInfo部分
--
+- |bolt字段名|CSE字段名|是否需要转换|说明|
+  |--|--|--|--|
+  |port|properties|否|properties的属性之一|
+  |weight|properties|否|properties的属性之一|
+  |serializationType|properties|否|properties的属性之一|
+  |protocolType|properties|否|properties的属性之一|
+  |path|hostName|是|path的host部分|
+  |path|endpoints|是|path的endpoint部分，只有一个|
+  |staticAttrs|properties|否|properties的属性|
 -

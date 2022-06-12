@@ -61,9 +61,21 @@
 - ### 订阅服务
 - registry的方法名：subscribe(ConsumerConfig config)
 - CSE需要调用的接口为：
-- 1. 查询指定微服务信息
-  2.
--
+- 1. 查询指定微服务契约信息
+  2. 修改微服务契约(添加此consumer信息)
+- ![订阅微服务.png](../assets/订阅微服务_1655003166801_0.png)
+- ### 取消订阅服务
+- registry的方法名：unSubscribe(ConsumerConfig config)
+- CSE需要调用的接口为：
+- 1. 查询指定微服务契约信息
+  2. 修改微服务契约(删除此consumer信息)
+- ![订阅微服务.png](../assets/订阅微服务_1655003166801_0.png)
+- ###批量取消订阅服务
+- registry的方法名：unSubscribe(ConsumerConfig config)
+- CSE需要调用的接口为：
+- 1. 查询指定微服务契约信息
+  2. 修改微服务契约(删除此consumer信息)
+- ![订阅微服务.png](../assets/订阅微服务_1655003166801_0.png)
 -
 -
 -

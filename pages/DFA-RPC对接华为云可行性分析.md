@@ -12,9 +12,10 @@
 - 1. 梳理CSE的API接口清单和元数据结构。(完成)
   2. 硬编码模式完成基于CSE和bolt协议的冒烟验证。(完成)
   3. 梳理DFA-RPC的registry模块的注册机制和方案。(完成)
-  4. 梳理bolt传输需要的元数据信息和数据结构。
-  5. 整合基于bolt协议的元数据结构与CSE元数据结构的对接场景。
-  6.完成CSE的registry模块(DFA-RPC体系)。
+  4. 梳理bolt传输需要的元数据信息和数据结构。(完成)
+  5. 整合基于bolt协议的元数据结构与CSE元数据结构的对接场景。(完成)
+  6. 完成CSE的registry模块(DFA-RPC体系)。
+  7. 其他待完成任务。
 -
 - ## 华为CSE对应API梳理
 - ### CSE说明
@@ -132,8 +133,9 @@
   |staticAttrs|string|其他静态属性|默认为空|
 - ## CSE数据结构定义
 - CSE数据结构如下：
-- ![image.png](../assets/image_1655006171568_0.png)
+- ![image.png](../assets/image_1655006494243_0.png)
 -
 -
 - ## bolt协议对接CSE数据结构
+-
 -

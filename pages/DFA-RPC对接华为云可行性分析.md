@@ -114,6 +114,9 @@
 -
 - ## bolt协议元数据数据结构定义
 - bolt协议传输需要以下元数据：
+- com.shine.dfa.sample.service.runtime.UserBService:1.0@DEFAULT	bolt://192.168.31.133:12203?serialization=hessian2
+- 数据结构说明
+-
 -
 -
 -

@@ -14,7 +14,7 @@
   3. 梳理DFA-RPC的registry模块的注册机制和方案。(完成)
   4. 梳理bolt传输需要的元数据信息和数据结构。(完成)
   5. 整合基于bolt协议的元数据结构与CSE元数据结构的对接场景。(完成)
-  6. 完成CSE的registry模块(DFA-RPC体系)。
+  6. 完成CSE的registry模块(DFA-RPC体系)。(完成）
   7. 其他待完成任务。
 -
 - ## 华为CSE对应API梳理

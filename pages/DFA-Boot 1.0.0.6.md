@@ -17,7 +17,6 @@ title:: DFA-Boot 1.0.0.6
   :END:
 - TODO [[DFA-Boot Acuator方案设计]]
 - TODO [[基于Lite模式开发手册]]
-- TODO 基于Lite模式开发手册
 - TODO 基于注册中心的开发手册
 - TODO 重构jdbc-dfa-boot-starter
 - TODO 支持多数据库配置（基于CRC）

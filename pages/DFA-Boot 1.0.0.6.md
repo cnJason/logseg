@@ -24,4 +24,15 @@ title:: DFA-Boot 1.0.0.6
 - TODO DFA组件版本自检方案设计
 - TODO DFA-Boot启动参数添加关键信息校验
 - TODO  DFABoot基于华为注册中心开发 -20220728001(高优先级) ok
--
+- ## 1.0.0.6 
+  [版本升级]
+- [更新] rpc-dfa-boot    依赖为 v1.0.0.6
+   [更新] rpc-dfa-all    依赖为 v5.8.5
+   [更新] shine-soa-dfa-boot 依赖升级至 v1.0.0.6
+   [更新] runtime-dfa-boot 依赖升级至 v1.0.0.6
+   [更新] jdbc-dfa-boot 依赖升级至 v1.0.0.6
+   [新增] dfa-registry-hwsc-plugin 依赖为v1.0.0.0
+  
+  [功能说明]
+- [新增] Boot-20220728001 dfa-registry-hwsc-plugin提供注册至华CSE的能力.
+- [新增] Boot-20220728002 DFA-Boot Actuator设计

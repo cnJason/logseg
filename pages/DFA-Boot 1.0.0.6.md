@@ -16,5 +16,13 @@ title:: DFA-Boot 1.0.0.6
   CLOCK: [2022-07-28 Thu 16:34:14]--[2022-07-28 Thu 16:34:15] =>  00:00:01
   :END:
 - TODO [[DFA-Boot Acuator方案设计]]
-- TODO []
+- TODO [[基于Lite模式开发手册]]
+- TODO 基于Lite模式开发手册
+- TODO 基于注册中心的开发手册
+- TODO 重构jdbc-dfa-boot-starter
+- TODO 支持多数据库配置（基于CRC）
+- TODO DFA-Trace剥离
+- TODO DFA组件版本自检方案设计
+- TODO DFA-Boot启动参数添加关键信息校验
+- TODO  DFABoot基于华为注册中心开发
 -

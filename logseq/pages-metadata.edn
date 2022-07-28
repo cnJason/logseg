@@ -140,6 +140,12 @@
  {:block/name "c",
   :block/created-at 1652062230305,
   :block/updated-at 1652062230305}
+ {:block/name "canceled",
+  :block/created-at 1658997082708,
+  :block/updated-at 1658997082708}
+ {:block/name "cancelled",
+  :block/created-at 1658997082708,
+  :block/updated-at 1658997082708}
  {:block/name "card",
   :block/created-at 1652062230305,
   :block/updated-at 1652062230305}

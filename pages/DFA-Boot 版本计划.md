@@ -1,4 +1,5 @@
 - [[DFA-Boot 1.0.0.4 hotfix 001]]
 - [[DFA-Boot 1.0.0.5 ]]
+- [[DFA-Boot 1.0.0.6]]
 -
 -

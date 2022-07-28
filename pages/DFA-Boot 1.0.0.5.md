@@ -8,11 +8,5 @@ title:: DFA-Boot 1.0.0.5
   CLOCK: [2022-07-28 Thu 16:25:21]--[2022-07-28 Thu 16:25:50] =>  00:00:29
   CLOCK: [2022-07-28 Thu 16:25:52]
   :END:
-- DOING [[DFA-Boot  应用配置参数自检方案]]
-  :LOGBOOK:
-  CLOCK: [2022-07-28 Thu 16:25:21]
-  :END:
-- DOING [[DFA-Boot  各模块开关梳理]]
-  :LOGBOOK:
-  CLOCK: [2022-07-28 Thu 16:25:33]
-  :END:
+- [[DFA-Boot jar包检测方案]]
+-

@@ -23,5 +23,5 @@ title:: DFA-Boot 1.0.0.6
 - TODO DFA-Trace剥离
 - TODO DFA组件版本自检方案设计
 - TODO DFA-Boot启动参数添加关键信息校验
-- TODO  DFABoot基于华为注册中心开发 (高优先级)
+- TODO  DFABoot基于华为注册中心开发 -20220728001(高优先级)
 -

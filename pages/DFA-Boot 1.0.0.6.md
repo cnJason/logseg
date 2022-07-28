@@ -15,7 +15,7 @@ title:: DFA-Boot 1.0.0.6
   CLOCK: [2022-07-28 Thu 16:34:12]--[2022-07-28 Thu 16:34:13] =>  00:00:01
   CLOCK: [2022-07-28 Thu 16:34:14]--[2022-07-28 Thu 16:34:15] =>  00:00:01
   :END:
-- TODO [[DFA-Boot Acuator方案设计]]
+- TODO [[DFA-Boot Actuator方案设计]]
 - TODO [[基于Lite模式开发手册]]
 - TODO 基于注册中心的开发手册
 - TODO 重构jdbc-dfa-boot-starter
@@ -23,5 +23,5 @@ title:: DFA-Boot 1.0.0.6
 - TODO DFA-Trace剥离
 - TODO DFA组件版本自检方案设计
 - TODO DFA-Boot启动参数添加关键信息校验
-- TODO  DFABoot基于华为注册中心开发 -20220728001(高优先级)
+- TODO  DFABoot基于华为注册中心开发 -20220728001(高优先级) ok
 -

@@ -1,0 +1,3 @@
+- ## 背景
+- 参照SpringBoot Actuator 设计属于DFA体系自己的Actuator，提供对于服务的状态监控。
+-

@@ -34,5 +34,5 @@ title:: DFA-Boot 1.0.0.6
    [新增] dfa-registry-hwsc-plugin 依赖为v1.0.0.0
   
   [功能说明]
-- [新增] Boot-20220728001 dfa-registry-hwsc-plugin提供注册至华CSE的能力.
+- [新增] Boot-20220728001 dfa-registry-hwsc-plugin提供注册至华为CSE的能力.
 - [新增] Boot-20220728002 DFA-Boot Actuator设计

@@ -33,6 +33,11 @@
 - ## ping端点
 - ping端点用于提供此服务是否存活的能力，返回的数据结构如下：
 - ```json
+  {
+    "status":"running", 
+    "timestamp": "1659345380000",
+    "duration": "500hour30min",
+  }
   ```
 -
 -

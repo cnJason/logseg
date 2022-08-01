@@ -34,9 +34,17 @@
 - ping端点用于提供此服务是否存活的能力，返回的数据结构如下：
 - ```json
   {
-    "status":"running", 
-    "timestamp": "1659345380000",
-    "duration": "500hour30min",
+    "status":"running",  //状态- ok表示启动完成，running表示正在启动。
+    "timestamp": "1659345380000", 、// 当前时间.用时间戳显示.
+    "duration": "500hour30min", // 运行时间。格式可配置。默认为HH hour , mm min
+  }
+  ```
+-
+- ## health端点
+- health端点用于提供此服务本身以及它依赖的各模块的健康状态。返回的数据结构如下
+- ```json
+  {
+    
   }
   ```
 -

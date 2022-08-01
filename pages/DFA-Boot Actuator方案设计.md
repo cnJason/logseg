@@ -13,9 +13,16 @@
 - DFA Boot Actuator参照Springboot Actuator的使用方式进行设计，并且进行部分的裁剪，目前只暴露四个endpoint：ping，info，health和metrics，并且提供info，health和metrics这三个endpoint的读写能力。
 -
 - ### 整体设计
-- #### 自我保护能力
+- #### endpoint保护
 - DFA Boot Actuator模块对所有的endpoint需要有自我保护的能力。包含以下功能：
-	- 1. 快照功能(仅保存一分钟)
+- 1. 快照能力(返回上一次成功的数据)
+  2. 流控能力(可以配置每个endpoint的rate limited)
+- #### 信息写入
+- DFA Boot Actuator模块需要提供入口给DFA-Boot的组件和业务系统进行info,health和metrics的信息的写入。
+-
+- #### info信息写入
+- #### health 信息写入
+- #### metrics 信息写入
 - 一、提供端点
   1- ping 仅提供当前节点存活状态
   2- health 提供节点及各个组件存活状态，包括错误信息

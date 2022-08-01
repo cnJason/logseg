@@ -19,7 +19,12 @@
   2. 流控能力(可以配置每个endpoint的rate limited)
 - #### 信息写入
 - DFA Boot Actuator模块需要提供入口给DFA-Boot的组件和业务系统进行info,health和metrics的信息的写入。
-- 信息组件
+- #### endpoint输出
+- 通过http输出对应的endpoint信息。
+- #### 服务数据输出
+- 通过Spring Bean的模式输出对应的域信息。
+- #### 组件、端点配置
+-
 -
 - #### info信息写入
 - #### health 信息写入

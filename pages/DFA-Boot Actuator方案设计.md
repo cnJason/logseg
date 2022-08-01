@@ -9,6 +9,9 @@
 - 当程序引入依赖并且写好配置之后，启动项目即可看见actuator的对应的端点，SpringBoot Actuator包含的endpoint如下
 - ![image.png](../assets/image_1659342798115_0.png)
 - 而默认只开启了info和health两个端点。
+- ## MircoMeter
+- Micrometer 是一个用于基于 JVM 的应用程序的指标检测库。它为最流行的监控系统的检测客户端提供了一个简单的外观，让您可以检测基于 JVM 的应用程序代码，而无需供应商锁定。它旨在为您的指标收集活动增加很少甚至没有开销，同时最大限度地提高指标工作的可移植性。
+- Micrometer提供了与供应商无关的接口，包括 timers（计时器），gauges（量规），counters（计数器）， distribution summaries（分布式摘要）， long task timers（长任务定时器）。它具有维度数据模型，当与维度监视系统结合使用时，可以高效地访问特定的命名度量，并能够跨维度深入研究。
 - ## DFA Boot Actuator
 - DFA Boot Actuator参照Springboot Actuator的使用方式进行设计，并且进行部分的裁剪，目前只暴露四个endpoint：ping，info，health和metrics，并且提供info，health和metrics这三个endpoint的读写能力。
 -
@@ -26,26 +29,8 @@
 - #### 组件、端点配置
 - 通过配置文件来处理组件和端点的开关、流控的配置。
 - #### 自定义Metrics配置
-- 提供@Metrics的Annotation将业务特定指标输出到metrics的检查点中，Metrics参照
--
-- #### info信息写入
-- #### health 信息写入
-- #### metrics 信息写入
-- 一、提供端点
-  1- ping 仅提供当前节点存活状态
-  2- health 提供节点及各个组件存活状态，包括错误信息
-  3- metrics 提供节点及各组件的metric信息，可通过参数获取指定组件信息
-  4- info 提供节点及各组件的info信息，可通过参数获取指定组件信息
-- 二、自我保护策略
-  1- 端点频率保护（比如1分钟内仅返回上一分钟的信息）
-  2- 错误保护（组件相关访问报错保护）
-  3- 警告（比如组件接口访问时间过久等警告信息输出）
-  4- 快照（保存上一次信息，用于超过阈值时返回）
-  5- 提供个组件、端点的开关配置
-- 三、其他
-- 1、提供切面能力，在检查项开始前和结束后的切面
-- 类似：可提供Event交由ApplicationListener处理，或则提供类Filter能力
-- 2、提供排序能力，使用spring的order能力
+- 提供@Metrics的Annotation将业务特定指标输出到metrics的检查点中，Metrics参照micrometer的能力来对接。
+- ## ping
 -
 -
 -

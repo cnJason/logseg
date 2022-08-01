@@ -1,5 +1,8 @@
 - ## 背景
 - 参照SpringBoot Actuator 设计属于DFA体系自己的Actuator，提供对于服务的状态监控、服务的依赖监控、服务状态上报，通用服务信息织入接口等功能。
+- ## Spring Boot Actuator
+- Spring Boot Actuator是Springboot的四大组件之一
+-
 -
 -
 -

@@ -10,8 +10,6 @@
 - ![image.png](../assets/image_1659342798115_0.png)
 - 而默认只开启了info和health两个端点。
 - ## DFA Boot Actuator
-- DFA Boot Actuator参照Springboot Actuator的使用方式进行
--
--
+- DFA Boot Actuator参照Springboot Actuator的使用方式进行设计，并且进行部分的裁剪，目前只暴露三个endpoint，info,health和metrics，并且
 -
 -

@@ -24,7 +24,9 @@
 - #### 服务数据输出
 - 通过Spring Bean的模式输出对应的域信息。
 - #### 组件、端点配置
--
+- 通过配置文件来处理组件和端点的开关、流控的配置。
+- #### 自定义Metrics配置
+- 提供@Metrics的Annotation将业务特定指标输出到metrics的检查点中，Metrics参照
 -
 - #### info信息写入
 - #### health 信息写入

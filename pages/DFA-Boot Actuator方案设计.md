@@ -6,7 +6,11 @@
   2、自动装配：简单配置甚至零配置即可运行项目
   3、starter：jar包的引入，解决jar版本冲突问题
   4、CLI：命令行
-- 当程序引入依赖并且写好配置之后，启动项目
+- 当程序引入依赖并且写好配置之后，启动项目即可看见actuator的对应的端点，SpringBoot Actuator包含的endpoint如下
+- ![image.png](../assets/image_1659342798115_0.png)
+- 而默认只开启了info和health两个端点。
+- ## DFA Boot Actuator
+- DFA Boot Actuator参照Springboot Actuator的使用方式进行
 -
 -
 -

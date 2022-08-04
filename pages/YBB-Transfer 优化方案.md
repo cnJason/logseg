@@ -1,0 +1,6 @@
+- ## 现有能力
+- 定时修改订单的shipment status code ( interval 5min )
+- 定时发送event至upstream(interval 5min )
+- 定时发送exception event至upstream(interval 5min )
+- 定时从CDL获取VPOD(interval 2hour)
+-

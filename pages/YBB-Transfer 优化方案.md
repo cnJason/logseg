@@ -5,7 +5,15 @@
 	- 定时发送exception event至upstream(interval 5min )
 	- 定时从CDL获取VPOD(interval 2hour)
 	- 定时从Onfleet获取VPOD(interval 2hour)
-	-
+- 修改keysoftware的属性
+	- vehiclepType
+	- ref3
+- 上游通过接口派发订单
+	- tangelo(gobolt)--->未完成
+- 监听下游webhook接口
+	- onfleet
+		-
+-
 -
 -
 -

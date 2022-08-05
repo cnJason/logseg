@@ -42,17 +42,27 @@
   
   ```
 - ##### 流量控制
-- 通过配置文件来处理组件和端点的开关的配置。
 - 我们可以通过在配置文件中添加以下配置：
 - ```json
-  # 这样写就可以开放所有的endpoint(ping，info，health和metrics)
-  management.endpoints.web.exposure.include=*
+  # ping的endpoint阈值
+  management.endpoints.web.endpoint.ping.maxcount = 10
+  # ping的endpoint的阈值单位： second/ minute/ hour
+  management.endpoints.web.endpoint.ping.unit = second 
   
-  # 也可以指定开放指定的endpoint
-  management.endpoints.web.exposure.include=ping,info
+  # info的endpoint阈值
+  management.endpoints.web.endpoint.info.maxcount = 10
+  # info的endpoint的阈值单位： second/ minute/ hour
+  management.endpoints.web.endpoint.info.unit = second 
   
-  # excludek可以配置关闭对应的endpoint.
-  management.endpoints.web.exposure.exclude=beans
+  # metrics的endpoint阈值
+  management.endpoints.web.endpoint.metrics.maxcount = 10
+  # metrics的endpoint的阈值单位： second/ minute/ hour
+  management.endpoints.web.endpoint.metrics.unit = second 
+  
+  # health的endpoint阈值
+  management.endpoints.web.endpoint.health.maxcount = 10
+  # health的endpoint的阈值单位： second/ minute/ hour
+  management.endpoints.web.endpoint.health.unit = second 
   
   ```
 -

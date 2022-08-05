@@ -41,9 +41,27 @@
   ```
 -
 - ## health端点
-- health端点用于提供此服务本身以及它依赖的各模块的健康状态。返回的数据结构如下
+- health端点用于提供此服务本身以及它依赖的各模块和各中间件的联通状态。返回的数据结构如下
 - ```json
   {
+    "status": "up",
+    "details":{
+      "dfa-boot": {
+      	"status": "UP",
+        	"version": "1.0.0.5-SNAPSHOT",
+        	"details": {
+            	"runtime-dfa-boot" : {
+                
+              }
+          }
+    	},
+      "redis": {
+        "status": "UP"
+      },
+      "database": {
+         "status": "UP"
+      }
+    }
     
   }
   ```

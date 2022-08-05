@@ -90,7 +90,7 @@
   ```
 - ## metrics端点
 - metrics端点不是一个端点，而是指标端点的集合。通过访问metrics端点可以获得所有的metrics指标的信息。
-- 如果访问metrics/{指标} 可以获取指标具体的信息。
+- 如果访问metrics/{metricName} 可以获取指标具体的信息。
 - ```json
   {
     "names": [
@@ -102,4 +102,10 @@
   ```
 - 具体的指标信息的格式如下：
 - ```json
+  {
+    "name": "hikaricp.connections",
+    "description": "hikaricp connection count",
+    "baseUnit": "",
+    ""
+  }
   ```

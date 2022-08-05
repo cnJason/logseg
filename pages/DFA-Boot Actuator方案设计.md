@@ -29,7 +29,7 @@
 - #### 组件、端点配置
 - 通过配置文件来处理组件和端点的开关、流控的配置。
 - #### 自定义Metrics配置
-- 提供@Metrics的Annotation将业务特定指标输出到metrics的检查点中，Metrics参照micrometer的能力来对接。
+- 提供@Metrics的Annotation将业务特定指标输出到metrics的指标中，Metrics参照micrometer的能力来对接。
 - ## ping端点
 - ping端点用于提供此服务是否存活的能力，返回的数据结构如下：
 - ```json
@@ -106,6 +106,12 @@
     "name": "hikaricp.connections",
     "description": "hikaricp connection count",
     "baseUnit": "",
-    ""
+    "measurements" :[ // 指标列表.
+      {
+        "statistic":"VALUE", //统计类型
+        "value":10  // 统计值.
+      }
+    ]
   }
   ```
+-

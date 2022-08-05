@@ -28,7 +28,34 @@
 - 通过Spring Bean的模式输出对应的域信息。
 - #### 组件、端点配置
 - 通过配置文件来处理组件和端点的开关、流控的配置。
-- 我们可以通过在配置
+- ##### 端点开关
+- 我们可以通过在配置文件中添加以下配置：
+- ```json
+  # 这样写就可以开放所有的endpoint(ping，info，health和metrics)
+  management.endpoints.web.exposure.include=*
+  
+  # 也可以指定开放指定的endpoint
+  management.endpoints.web.exposure.include=ping,info
+  
+  # excludek可以配置关闭对应的endpoint.
+  management.endpoints.web.exposure.exclude=beans
+  
+  ```
+- ##### 流量控制
+- 通过配置文件来处理组件和端点的开关的配置。
+- 我们可以通过在配置文件中添加以下配置：
+- ```json
+  # 这样写就可以开放所有的endpoint(ping，info，health和metrics)
+  management.endpoints.web.exposure.include=*
+  
+  # 也可以指定开放指定的endpoint
+  management.endpoints.web.exposure.include=ping,info
+  
+  # excludek可以配置关闭对应的endpoint.
+  management.endpoints.web.exposure.exclude=beans
+  
+  ```
+-
 - #### 自定义Metrics配置
 - 提供@Metrics的Annotation将业务特定指标输出到metrics的指标中，Metrics参照micrometer的能力来对接。
 - ## ping端点

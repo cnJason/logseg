@@ -80,7 +80,7 @@
 - 上面的应用的详细健康信息发现，健康信息包含DFA组件的状态和中间件的状态，示例的报文中描述的就是启用监控的这个spring boot应用确实是连接了redis和DB，从这里可以判断服务使用的中间件状态。
 - 状态有UP 和SHUTDOWN两个状态。
 - ## info端点
-- 端点用查看服务的静态信息，包括最后生效的配置文件、自定义的各种参数的信息。返回的数据格式如下：
+- info端点用查看服务的静态信息，包括最后生效的配置文件、自定义的各种参数的信息。返回的数据格式如下：
 - ```json
   {
     "shine.dfa.rpc.registry.address": "",
@@ -89,5 +89,14 @@
   }
   ```
 - ## metrics端点
--
--
+- metrics端点不是一个端点，而是指标端点的集合。通过访问metrics端点可以获得所有的metrics指标的信息。
+- 如果访问metrics/{指标} 可以获取指标具体的信息。
+- ```json
+  {
+    "names": [
+      "hikaricp.connections",
+      "hikaricp.connections.acquire",
+      "hikaricp.connections.active"
+    ]
+  }
+  ```

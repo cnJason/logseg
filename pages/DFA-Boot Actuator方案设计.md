@@ -136,8 +136,60 @@
       public void processCollectResult() {
           userCounter.increment(1D);
       }
-  
-  原文出自：www.hangge.com  转载请保留原文链接：https://www.hangge.com/blog/cache/detail_2723.html
   ```
-- 只要设置了这个值，就可以在metrics端点看到 aaaa.gauge这个指标。如果访问metrics/aaaa.gauge这个endpoint的话，会得到对应的数值。
+- 只要调用了上面的方法，就会在计数器中+1，显示的逻辑同上。
+- #### Timer(计时器)
+- **Timer**（计时器）可以同时测量一个特定的代码逻辑块的调用（执行）速度和它的时间分布。简单来说，就是在调用结束的时间点记录整个调用块执行的总时间，适用于测量短时间执行的事件的耗时分布，例如消息队列消息的消费速率。
+  使用方式：
+- ```java
+  private Timer timer = Metrics.timer("user.test.timer");
+  
+   
+      public void processCollectResult() {
+          userCounter.increment(1D);
+      }
+  
+  @GetMapping("/hello")
+      public void hello() {
+   
+          // 执行createOrder方法并记录执行时间
+          timer.record(() -> createOrder());
+      }
+   
+      //模拟方法耗时
+      private void createOrder() {
+          try {
+              TimeUnit.SECONDS.sleep(3);
+          } catch (InterruptedException e) {
+          }
+      }
+  ```
+- 只要调用了上面的方法，就会在记录中+1，显示的逻辑同上。
+- #### Timer(计时器)
+- **Timer**（计时器）可以同时测量一个特定的代码逻辑块的调用（执行）速度和它的时间分布。简单来说，就是在调用结束的时间点记录整个调用块执行的总时间，适用于测量短时间执行的事件的耗时分布，例如消息队列消息的消费速率。
+  使用方式：
+- ```java
+  private Timer timer = Metrics.timer("user.test.timer");
+  
+   
+      public void processCollectResult() {
+          userCounter.increment(1D);
+      }
+  
+  @GetMapping("/hello")
+      public void hello() {
+   
+          // 执行createOrder方法并记录执行时间
+          timer.record(() -> createOrder());
+      }
+   
+      //模拟方法耗时
+      private void createOrder() {
+          try {
+              TimeUnit.SECONDS.sleep(3);
+          } catch (InterruptedException e) {
+          }
+      }
+  ```
+- 只要调用了上面的方法，就会在中+1，显示的逻辑同上。
 -

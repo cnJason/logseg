@@ -117,4 +117,27 @@
 - ### 采集端点指标
 - 采集端点指标我们采用的方案是依赖mircometer的能力，提供以下四种采集的维度：
 - 1. **Gauge**
-  2. **Counter**Timer**、**Summary**
+  2. **Counter**
+  3.  **Timer**
+  4.  **Summary**
+- #### Gauge(计量器)
+- **Gauge**（计量器）是最简单的度量类型，只有一个简单的返回值，他用来记录一些对象或者事物的瞬时值。
+  使用方式：
+- ```java
+  Metrics.gauge("aaaa.gauge",3);
+  ```
+- 只要设置了这个值，就可以在metrics端点看到 aaaa.gauge这个指标。如果访问metrics/aaaa.gauge这个endpoint的话，会得到对应的数值。
+- #### Counter(计数器)
+- **Counter**（计数器）简单理解就是一种只增不减的计数器。它通常用于记录服务的请求数量、完成的任务数量、错误的发生数量等等。
+  使用方式：
+- ```java
+  static final Counter userCounter = Metrics.counter("user.counter.total");
+   
+      public void processCollectResult() {
+          userCounter.increment(1D);
+      }
+  
+  原文出自：www.hangge.com  转载请保留原文链接：https://www.hangge.com/blog/cache/detail_2723.html
+  ```
+- 只要设置了这个值，就可以在metrics端点看到 aaaa.gauge这个指标。如果访问metrics/aaaa.gauge这个endpoint的话，会得到对应的数值。
+-

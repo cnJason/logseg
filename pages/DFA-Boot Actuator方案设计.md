@@ -15,7 +15,7 @@
 - ## DFA Boot Actuator
 - DFA Boot Actuator参照Springboot Actuator的使用方式进行设计，并且进行部分的裁剪，目前只暴露四个endpoint：ping，info，health和metrics，并且提供info，health和metrics这三个endpoint的读写能力。
 -
-- ### 整体设计
+- ## 整体设计
 - #### endpoint保护
 - DFA Boot Actuator模块对所有的endpoint需要有自我保护的能力。包含以下功能：
 - 1. 快照能力(返回上一次成功的数据)
@@ -28,6 +28,7 @@
 - 通过Spring Bean的模式输出对应的域信息。
 - #### 组件、端点配置
 - 通过配置文件来处理组件和端点的开关、流控的配置。
+-
 - #### 自定义Metrics配置
 - 提供@Metrics的Annotation将业务特定指标输出到metrics的指标中，Metrics参照micrometer的能力来对接。
 - ## ping端点
@@ -164,32 +165,20 @@
           }
       }
   ```
-- 只要调用了上面的方法，就会在记录中+1，显示的逻辑同上。
-- #### Timer(计时器)
-- **Timer**（计时器）可以同时测量一个特定的代码逻辑块的调用（执行）速度和它的时间分布。简单来说，就是在调用结束的时间点记录整个调用块执行的总时间，适用于测量短时间执行的事件的耗时分布，例如消息队列消息的消费速率。
+- 只要调用了上面的方法，就会记录每次请求的耗时，显示的逻辑同上。
+- #### Summary(摘要)
+- **Summary**（摘要）用于跟踪事件的分布。它类似于一个计时器，但更一般的情况是，它的大小并不一定是一段时间的测量值。在 **micrometer **中，对应的类是 **DistributionSummary**，它的用法有点像 **Timer**，但是记录的值是需要直接指定，而不是通过测量一个任务的执行时间。
   使用方式：
 - ```java
-  private Timer timer = Metrics.timer("user.test.timer");
-  
+  private DistributionSummary summary = Metrics.summary("user.test.summary");
    
-      public void processCollectResult() {
-          userCounter.increment(1D);
-      }
-  
-  @GetMapping("/hello")
+      @GetMapping("/hello")
       public void hello() {
-   
-          // 执行createOrder方法并记录执行时间
-          timer.record(() -> createOrder());
+          summary.record(2D);
+          summary.record(3D);
+          summary.record(4D);
       }
-   
-      //模拟方法耗时
-      private void createOrder() {
-          try {
-              TimeUnit.SECONDS.sleep(3);
-          } catch (InterruptedException e) {
-          }
-      }
+  
   ```
-- 只要调用了上面的方法，就会在中+1，显示的逻辑同上。
+- 只要调用了上面的方法，就会记录每次请求的值，显示的逻辑同上。
 -

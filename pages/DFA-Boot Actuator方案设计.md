@@ -51,7 +51,20 @@
         	"version": "1.0.0.5-SNAPSHOT",
         	"details": {
             	"runtime-dfa-boot" : {
-                
+                	"status": "UP",
+                	"version": "1.0.0.5-SNAPSHOT"	
+              },
+            "web-dfa-boot" : {
+                	"status": "UP",
+                	"version": "1.0.0.5-SNAPSHOT"	
+              },
+            "shine-soa-dfa-boot" : {
+                	"status": "UP",
+                	"version": "1.0.0.5-SNAPSHOT"	
+              },
+            "jdbc-dfa-boot" : {
+                	"status": "UP",
+                	"version": "1.0.0.5-SNAPSHOT"	
               }
           }
     	},
@@ -62,9 +75,11 @@
          "status": "UP"
       }
     }
-    
   }
   ```
+- 上面的应用的详细健康信息发现，健康信息包含DFA组件的状态和中间件的状态，示例的报文中描述的就是启用监控的这个spring boot应用确实是连接了redis和DB，从这里可以判断服务使用的中间件状态。
+- 状态有UP 和SHUTDOWN两个状态。
+- ## info端点
 -
 -
 -

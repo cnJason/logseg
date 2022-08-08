@@ -16,7 +16,11 @@
   6.log中的异常信息支持i18n占位符
 -
 - ## 需要BMS提供以下支持
-- 1.
+	- 提供获取已经设置的国际化key(根据项目名)，规则如下：
+		- 字典KEY是以dict.开头，格式如：dict.{groupCode}.{dictCode}
+		- 异常KEY是exception.开头，格式为exception.{exceptionName}
+		- 业务异常是exception.BIZ.开头，格式为：exception.BIZ.{exceptionName}
+		-
 -
 -
 -

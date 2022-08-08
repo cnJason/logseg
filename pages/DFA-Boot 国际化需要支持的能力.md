@@ -20,7 +20,11 @@
 		- 字典KEY是以dict.开头，格式如：dict.{groupCode}.{dictCode}
 		- 异常KEY是exception.开头，格式为exception.{exceptionName}
 		- 业务异常是exception.BIZ.开头，格式为：exception.BIZ.{exceptionName}
-		-
+		- 日志的key是以log.开头，格式如： log.{logName}
+		- 表头和查询条件的key是以param. 开头，格式如：param.{paramName}
+	- 提供设置国际化key的入口。
+	- 提供国际化key的初始化脚本。
+	-
 -
 -
 -

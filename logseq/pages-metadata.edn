@@ -218,9 +218,12 @@
  {:block/name "dfa-boot 功能点说明",
   :block/created-at 1658393717165,
   :block/updated-at 1658393957411}
+ {:block/name "dfa-boot 国际化详细设计",
+  :block/created-at 1660274604979,
+  :block/updated-at 1660274662179}
  {:block/name "dfa-boot 国际化需要支持的能力",
   :block/created-at 1659927530834,
-  :block/updated-at 1660117361951}
+  :block/updated-at 1660274604980}
  {:block/name "dfa-boot 日志优化方案",
   :block/created-at 1652322414618,
   :block/updated-at 1652342779083}

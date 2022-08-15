@@ -1,5 +1,7 @@
 - DFA-Boot 1.0.0.5 从Spring 2.1.17-RELEASE 升级到2.5.13，其中包含三个大版本，改动的部分较多，故提供本文来说明需要关注的功能点和升级事项。本文将按照Spring和SpringBoot两部分说明升级的事务。
 - ## Spring升级事项
+- ### JDK依赖
+- Spring Framework 5.1 需要 JDK 8 或更高版本，并且首次特别支持 JDK 11（作为下一个长期支持版本）。我们强烈建议针对 JDK 11 的任何应用程序升级到 Spring Framework 5.1，在类路径和模块路径上提供无警告体验。
 - ### 依赖升级
 - Jackson 依赖升级到2.12
 - Groovy 依赖升级至3.0
@@ -36,4 +38,50 @@
   ```
 - `@RequestParam` 并在需要参数时强制 a和 Servlet集合/数组 `@RequestPart` 中的至少一个元素（即未明确标记为可选），否则将参数解析为。 `MultipartFile`  `Part`  `MultipartFile`  `Part`  `null`
 - Spring MVC 默认不再执行 `.*` 后缀模式匹配
--
+- ## SpringBoot 升级
+- ### 默认禁用JMX
+	- 从[#16090 开始](https://github.com/spring-projects/spring-boot/issues/16090)，默认情况下不再启用 JMX。可以使用配置属性启用此功能 `spring.jmx.enabled=true` 。如果您使用 IDE 功能来管理您的应用程序，您可能还希望在此处启用该标志。
+- ### JUnit 5
+- `spring-boot-starter-test` 现在默认提供 JUnit 5。JUnit 5 的老式引擎默认包含在内，以支持现有的基于 JUnit 4 的测试类，以便您可以在准备好迁移到 JUnit 5 时迁移到 JUnit 5。也可以在同一模块中混合使用基于 JUnit 4 和 JUnit 5 的测试类。如果您愿意，这允许您逐步迁移到 JUnit 5。
+- 请注意，JUnit 4 的 Maven Surefire 插件不支持该 `listener` 属性。如果您有类似以下的 Maven 配置：
+- ```
+  <configuration>
+  	<properties>
+  <property>
+  	<name>listener</name>
+  	<value>com.example.CustomRunListener</value>
+  </property>
+  	</properties>
+  </configuration>
+  ```
+- 您不能使用 `junit-vintage-engine` ，您需要显式回滚到 JUnit 4：
+- ```
+  <dependencies>
+  	<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-test</artifactId>
+  <scope>test</scope>
+  <exclusions>
+  	<exclusion>
+  		<groupId>org.junit.jupiter</groupId>
+  		<artifactId>junit-jupiter</artifactId>
+  	</exclusion>
+  	<exclusion>
+  		<groupId>org.junit.vintage</groupId>
+  		<artifactId>junit-vintage-engine</artifactId>
+  	</exclusion>
+  	<exclusion>
+  		<groupId>org.mockito</groupId>
+  		<artifactId>mockito-junit-jupiter</artifactId>
+  	</exclusion>
+  </exclusions>
+  	</dependency>
+  	<dependency>
+  <groupId>junit</groupId>
+  <artifactId>junit</artifactId>
+  <version>4.12</version>
+  	</dependency>
+  </dependencies>
+  ```
+	- ### AssertJ 升级至3.12
+	-

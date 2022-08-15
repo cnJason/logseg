@@ -3,5 +3,13 @@
 - ### 依赖升级
 - Jackson 依赖升级到2.12
 - Groovy 依赖升级至3.0
-- 废弃对于RxJava 1.x的支持，
-- ##
+- 废弃对于RxJava 1.x的支持，推荐使用RxJava 2.x和3.x
+- JCA CCI 支持已被弃用
+- ### 核心容器升级
+- `InstantiationAwareBeanPostProcessorAdapter` 现在已弃用，取而代之的是 `(Smart)InstantiationAwareBeanPostProcessor`
+- `@EventListener` 方法使用 `Ordered.LOWEST_PRECEDENCE` now 的隐式顺序值，与事务同步和 `@TransactionalEventListener` 方法保持一致。如果需要自定义排序，请始终 `@Order` 在所有Listener方法上声明值
+- ### web application升级
+- `@ExceptionHandler` 方法现在在查找匹配项时会检查所有异常原因。以前只检查第一个就返回了。
+- `WebSocketConfigurationSupport` 并且 `WebSocketMessageBrokerConfigurationSupport` 已被重构为不需要 CGLIB 代理
+- ### Spring MVC升级
+- `LocaleResolver` ,  `ThemeResolver` , `FlashMapManager` 和 `RequestToViewNameTranslator` bean 现在被声明在注解 `WebMvcConfigurationSupport` 的 `DelegatingWebMvcConfiguration` 级别

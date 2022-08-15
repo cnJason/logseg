@@ -25,6 +25,8 @@ title:: DFA-Boot 1.0.0.6
 - TODO DFA-Boot启动参数添加关键信息校验
 - TODO  DFABoot基于华为注册中心开发 -20220728001(高优先级) ok
 - TODO [[DFA-Boot 国际化需要支持的能力]]
+- TODO [[SpringBoot 升级版本后注意事项]]
+-
 -
 - ## 1.0.0.6 
   [版本升级]

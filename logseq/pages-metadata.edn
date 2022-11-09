@@ -7,6 +7,61 @@
  {:block/name "14)",
   :block/created-at 1658986483914,
   :block/updated-at 1658986483914}
+ {:block/name "20220715001 需要在dfa-boot中添加配置文件敏感信息加密的能力",
+  :block/created-at 1667978387858,
+  :block/updated-at 1667978798683}
+ {:block/name "20220922001 去除基于redis的订阅能力",
+  :block/created-at 1667978821983,
+  :block/updated-at 1667978840086}
+ {:block/name "20220922001 去除基于redis的订阅能力 ",
+  :block/created-at 1667978457201,
+  :block/updated-at 1667978457201}
+ {:block/name "20220922002 支持 csrf开关默认开启（并且支持默认配置）",
+  :block/created-at 1667978473739,
+  :block/updated-at 1667978867403}
+ {:block/name "20220922003 dfa-boot需要支持ipv6",
+  :block/created-at 1667978489795,
+  :block/updated-at 1667978489795}
+ {:block/name "20220922004 dfa-boot需要支持进行加密配置调整",
+  :block/created-at 1667978509443,
+  :block/updated-at 1667978900141}
+ {:block/name "20220922005 dfa-boot需要支持进行安全漏洞修复",
+  :block/created-at 1667978524145,
+  :block/updated-at 1667979521510}
+ {:block/name "20220922006 runtime-dfa-boot需要去除默认trace-span配置",
+  :block/created-at 1667978536009,
+  :block/updated-at 1667979455285}
+ {:block/name "20220922007 dfa-boot需要提供各开关文档梳理和整合方案",
+  :block/created-at 1667978548674,
+  :block/updated-at 1667978548674}
+ {:block/name "20220922008 dfa-boot需要提供各模块加载顺序梳理和整合方案",
+  :block/created-at 1667978560264,
+  :block/updated-at 1667979904770}
+ {:block/name "20220922009 dfa-boot 需要梳理和提供统一的错误码",
+  :block/created-at 1667978573414,
+  :block/updated-at 1667978573414}
+ {:block/name "20220922010 dfa-boot去除shine.dfa.web.errormsg配置",
+  :block/created-at 1667978585004,
+  :block/updated-at 1667978585004}
+ {:block/name "20220922011  dfa-boot调整websocket模块对redis的依赖",
+  :block/created-at 1667978595250,
+  :block/updated-at 1667978595250}
+ {:block/name "20220926001 dfa-boot需要提供对复杂表头的支持",
+  :block/created-at 1667978607474,
+  :block/updated-at 1667979094063}
+ {:block/name "20220926002 dfa- boot 需要输出安全合规的jar包报告和修复方案",
+  :block/created-at 1667978633109,
+  :block/updated-at 1667978633109}
+ {:block/name
+  "20220928001 dfa- boot 添加reflections小于0.9.11版本检查，并且存在黑名单中的jar包不允许启动",
+  :block/created-at 1667978647269,
+  :block/updated-at 1667979478880}
+ {:block/name "20221108001 dfa-boot 提供获取在线用户列表和数量的能力",
+  :block/created-at 1667978706677,
+  :block/updated-at 1667978706677}
+ {:block/name "20221108002 dfa-boot 对于json序列化的数据添加东八区支持",
+  :block/created-at 1667978735723,
+  :block/updated-at 1667978735723}
  {:block/name "2022年05月09日",
   :block/created-at 1652699833279,
   :block/updated-at 1652699833279}
@@ -70,10 +125,16 @@
   :block/updated-at 1652699817692}
  {:block/name "dfa-boot 1.0.0.6",
   :block/created-at 1658997196859,
-  :block/updated-at 1660548748303}
+  :block/updated-at 1667978943474}
+ {:block/name "dfa-boot 1.0.1.0",
+  :block/created-at 1667978329551,
+  :block/updated-at 1667979057108}
  {:block/name "dfa-boot actuator方案设计",
   :block/created-at 1658997326666,
   :block/updated-at 1659668396622}
+ {:block/name "dfa-boot bean加载优化设计",
+  :block/created-at 1667979675634,
+  :block/updated-at 1667979675634}
  {:block/name "dfa-boot jar包检测方案",
   :block/created-at 1658997278078,
   :block/updated-at 1658997278078}
@@ -94,13 +155,19 @@
   :block/updated-at 1652342779083}
  {:block/name "dfa-boot 版本计划",
   :block/created-at 1652699817693,
-  :block/updated-at 1658997196863}
+  :block/updated-at 1667978329551}
+ {:block/name "dfa-boot 自动导出支持复杂表头设计说明",
+  :block/created-at 1667979094063,
+  :block/updated-at 1667979341098}
  {:block/name "dfa-boot 问题汇总",
   :block/created-at 1652699817739,
   :block/updated-at 1652858919881}
  {:block/name "dfa-boot 需求设计",
   :block/created-at 1652699817740,
   :block/updated-at 1652699817740}
+ {:block/name "dfa-boot安全扫描概述",
+  :block/created-at 1667979521510,
+  :block/updated-at 1667979591917}
  {:block/name "dfa-boot插件式开发设计",
   :block/created-at 1656485088697,
   :block/updated-at 1656556174168}

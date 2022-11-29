@@ -33,5 +33,7 @@ title:: DFA-Boot 1.0.1.0
 - DONE [[20220928001 DFA- Boot 添加reflections小于0.9.11版本检查，并且存在黑名单中的jar包不允许启动]]
 - TODO [[20221108001 DFA-Boot 提供获取在线用户列表和数量的能力]]
 - TODO [[20221108002 DFA-Boot 对于JSON序列化的数据添加东八区支持]]
+- TODO [[ 20221124001 添加apm logback 支持.]]
+-
 -
 -
